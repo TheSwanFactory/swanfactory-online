@@ -1,2 +1,3 @@
 # swanfactory-online
- First Polygogic Platform
+
+The First Polygogic Platform for Continuous Learning and Holistic Development

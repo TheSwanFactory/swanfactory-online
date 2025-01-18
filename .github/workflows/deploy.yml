@@ -37,5 +37,3 @@ jobs:
           project: "swanfactory-online"
           entrypoint: "main.ts"
           root: "."
-          
-          

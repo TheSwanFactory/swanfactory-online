@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}}</title>
-  </head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{title}}</title>
+        <link rel="stylesheet" href="https://www.w3.org/StyleSheets/Core/Swiss" type="text/css">
+        <style>
+            .site-footer {
+                background-color: #f1f1f1;
+                padding: 20px;
+                text-align: center;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                font-size: 12px;
+                font-style: italic;
+            }
+        </style>
+    </head>
 
-  <body>
-    <header>
-      <h1>{{title}}</h1>
-    </header>
-    <main>
-      {{content}}
-    </main>
-    <footer>
-      <p>&copy; 2025 The Swan Factory</p>
-    </footer>
-  </body>
+    <body>
+        <header class="site-header">
+            <h1>{{title}}</h1>
+        </header>
+        <main>
+            {{content}}
+        </main>
+        <footer class="site-footer">
+            <p>&copy; 2025 The Swan Factory</p>
+        </footer>
+    </body>
 </html>

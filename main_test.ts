@@ -1,10 +1,10 @@
-import { assertEquals } from "@std/assert";
+import { assertEquals, assertMatch } from "@std/assert";
 import server from "./main.ts";
 
 Deno.test(async function serverFetch() {
   const req = new Request("https://deno.land");
   const res = await server.fetch(req);
-  assertEquals(await res.text(), "Home page");
+  assertMatch(await res.text(), /<title>Welcome!/);
 });
 
 Deno.test(async function serverFetchNotFound() {

@@ -20,7 +20,7 @@ export default {
     const url = new URL(req.url);
 
     if (url.pathname === "/") {
-        return await pageResponse("Home Page", "index");
+        return await pageResponse("Welcome!", "index");
     }
 
     const userPageMatch = userPagePattern.exec(url);

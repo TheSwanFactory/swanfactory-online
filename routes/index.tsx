@@ -26,7 +26,7 @@ export default function Home() {
         >
           Read the Polygogy Manyfesto
         </a>
-        <p className="text-lg text-gray-500">
+        <p className="text-lg text-gray-750">
           Coming soon: subscribe to our mailing list.
         </p>
       </div>

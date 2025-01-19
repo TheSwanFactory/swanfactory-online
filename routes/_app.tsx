@@ -11,7 +11,7 @@ export default function App({ Component }: PageProps) {
         <main>
           <Component />
         </main>
-        <footer className="site-footer">
+        <footer className="site-footer text-sm text-gray-500">
           <p>&copy; 2025 The Swan Factory</p>
         </footer>
       </body>

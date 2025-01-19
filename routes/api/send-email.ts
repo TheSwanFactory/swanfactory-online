@@ -3,13 +3,12 @@ import { sendEmail } from "../../utils/mail.ts";
 
 export const handler: Handlers = {
   async POST(req) {
-    try {
-      const { to, subject, text } = await req.json();
-      await sendEmail(to, subject, text);
-      return new Response("Email sent successfully", { status: 200 });
-    } catch (error) {
-      console.error("Error in send-email API:", error);
-      return new Response("Failed to send email", { status: 500 });
+    const { to, subject, text } = await req.json();
+    const status = await sendEmail(to, subject, text);
+    if (status < 300) {
+      return new Response("Email sent successfully", { status: status });
+    } else {
+      return new Response("Failed to send email", { status: status });
     }
   },
 };

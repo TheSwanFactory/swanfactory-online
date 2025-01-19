@@ -9,6 +9,9 @@ if (!apiKey || !domain) {
   );
 }
 
+console.log("Mailgun API key:", apiKey);
+console.log("Mailgun domain:", domain);
+
 const mailgun = new Mailgun({
   key: apiKey,
   domain: domain,
@@ -21,10 +24,15 @@ export async function sendEmail(
   text: string,
   from: string = "info@swanfactory.online",
 ) {
-  try {
-    await mailgun.send({ to, from, subject, text });
+  console.log(`Sending email to ${to}...`);
+  const response = await mailgun.send({ to, from, subject, text });
+  if (response.ok) {
     console.log(`Email sent to ${to}`);
-  } catch (error) {
-    console.error("Failed to send email:", error);
+  } else {
+    console.error(
+      `Error[${response.status}]: ${response.statusText}`,
+      response,
+    );
   }
+  return response.status;
 }

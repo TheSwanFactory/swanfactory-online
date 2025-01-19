@@ -7,22 +7,14 @@ export default function App({ Component }: PageProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="/styles.css" />
       </head>
-      <body class="bg-[#86d6ef]">
-        <div class="flex flex-col items-center">
-          <a href="/" class="underline">
-            <img
-              class="my-6"
-              src="/ong-logo.jpg"
-              width="128"
-              height="128"
-              alt="the Orphans & Guardians logo: gold+steel winged shield"
-            />
-          </a>
-        </div>
-        <div class="px-4 py-8 mx-auto">
+  <body>
+    <main>
           <Component />
-        </div>
-      </body>
+    </main>
+    <footer class="site-footer">
+      <p>&copy; 2025 The Swan Factory</p>
+    </footer>
+  </body>
     </html>
   );
 }

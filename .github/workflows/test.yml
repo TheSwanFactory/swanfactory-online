@@ -1,9 +1,11 @@
-name: Deploy
+name: Test
 on:
   push:
-    branches: main
+    branches:
+      - "**"
   pull_request:
-    branches: main
+    branches:
+      - "**"
 
 jobs:
   deploy:
@@ -31,9 +33,5 @@ jobs:
       - name: Install step
         run: "deno install"
 
-      - name: Upload to Deno Deploy
-        uses: denoland/deployctl@v1
-        with:
-          project: "swanfactory-online"
-          entrypoint: "main.ts"
-          root: "."
+      - name: Test
+        run: "deno test -R"

@@ -29,8 +29,8 @@ export default function Home() {
           Read the Polygogy Manyfesto
         </a>
         <div class="p-4 mx-auto max-w-screen-md">
-        <h3 class="text-2xl font-bold">Testing Email</h3>
-        <SendEmailButton />
+          <h3 class="text-2xl font-bold">Testing Email</h3>
+          <SendEmailButton />
         </div>
         <p className="text-lg text-gray-750">
           Coming soon: subscribe to our mailing list.

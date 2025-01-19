@@ -29,7 +29,10 @@ export default function SendEmailButton() {
 
   return (
     <div>
-      <button onClick={handleClick} class="px-4 py-2 bg-blue-500 text-white rounded">
+      <button
+        onClick={handleClick}
+        class="px-4 py-2 bg-blue-500 text-white rounded"
+      >
         Send Email
       </button>
       {status && <p>{status}</p>}

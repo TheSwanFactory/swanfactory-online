@@ -2,6 +2,9 @@
 *.pyc
 *.swp
 .env
+_fresh/
+node_modules/
+*.log
 
 /.cargo_home/
 /.idea/
@@ -9,6 +12,10 @@
 /.vscode/
 /target/
 /std/hash/_wasm/target
+
+# npm dependencies
+/cov
+cov.lcov
 
 # MacOS generated files
 .DS_Store

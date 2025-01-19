@@ -7,14 +7,14 @@ export default function App({ Component }: PageProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="/styles.css" />
       </head>
-  <body>
-    <main>
+      <body>
+        <main>
           <Component />
-    </main>
-    <footer class="site-footer">
-      <p>&copy; 2025 The Swan Factory</p>
-    </footer>
-  </body>
+        </main>
+        <footer class="site-footer">
+          <p>&copy; 2025 The Swan Factory</p>
+        </footer>
+      </body>
     </html>
   );
 }

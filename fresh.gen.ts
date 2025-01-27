@@ -4,17 +4,21 @@
 
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
+import * as $api_send_email from "./routes/api/send-email.ts";
 import * as $index from "./routes/index.tsx";
-
+import * as $EmailButton from "./islands/EmailButton.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
+    "./routes/api/send-email.ts": $api_send_email,
     "./routes/index.tsx": $index,
   },
-  islands: {},
+  islands: {
+    "./islands/EmailButton.tsx": $EmailButton,
+  },
   baseUrl: import.meta.url,
 } satisfies Manifest;
 

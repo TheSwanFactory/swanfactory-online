@@ -18,16 +18,18 @@ const mailgun = new Mailgun({
   region: "us", // or "eu" based on your Mailgun account
 });
 
+console.log("Mailgun client:", mailgun);
+
 export async function sendEmail(
   to: string,
   subject: string,
   text: string,
-  from: string = "info@swanfactory.online",
+  from: string = "info@mg.swanfactory.online",
 ) {
   console.log(`Sending email to ${to}...`);
   const response = await mailgun.send({ to, from, subject, text });
   if (response.ok) {
-    console.log(`Email sent to ${to}`);
+    console.log(`Email sent to ${to}`, response);
   } else {
     console.error(
       `Error[${response.status}]: ${response.statusText}`,

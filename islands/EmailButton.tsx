@@ -10,7 +10,7 @@ export default function SendEmailButton() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          to: "info@swanfactory.online",
+          to: "ernest@drernie.com",
           subject: "Hello from Deno Fresh",
           text: "This is a test email sent from a Deno Fresh application.",
         }),

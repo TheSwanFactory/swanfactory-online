@@ -1,8 +1,34 @@
 import SendEmailButton from "../islands/EmailButton.tsx";
 import { oauth2Client } from "../utils/auth.ts";
 
-export default function Home(props: { data: { user?: { login: string } } }) {
-  const user = props.data?.user;
+import { useEffect, useState } from "preact/hooks";
+
+export default function Home(props: { data: { sessionId?: string } }) {
+  const [user, setUser] = useState<{ login: string } | null>(null);
+
+  useEffect(() => {
+    async function fetchUser() {
+      if (props.data.sessionId) {
+        try {
+          const kv = await Deno.openKv();
+          const tokens = await kv.get(["session", props.data.sessionId]);
+          if (tokens.value) {
+            const response = await fetch("https://api.github.com/user", {
+              headers: {
+                Authorization: `Bearer ${tokens.value.accessToken}`,
+              },
+            });
+            if (response.ok) {
+              setUser(await response.json());
+            }
+          }
+        } catch (error) {
+          console.error("Error fetching user:", error);
+        }
+      }
+    }
+    fetchUser();
+  }, [props.data.sessionId]);
 
   return (
     <div>

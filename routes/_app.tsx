@@ -7,8 +7,8 @@ export default async function App(props: AppProps) {
   const { Component } = props;
   let user = null;
 
-  const cookies = getCookies(props.url.headers);
-  const sessionId = cookies.session;
+  const cookies = getCookies(props.state?.cookieMap ?? {});
+  const sessionId = cookies["session"];
   
   if (sessionId) {
     try {

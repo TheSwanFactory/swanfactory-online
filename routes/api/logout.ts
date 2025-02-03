@@ -1,9 +1,12 @@
 import { HandlerContext } from "$fresh/server.ts";
+import { getCookies } from "https://deno.land/std@0.224.0/http/cookie.ts";
 
 export async function handler(req: Request, ctx: HandlerContext) {
-  const sessionCookie = ctx.state.cookies?.session;
-  if (sessionCookie) {
-    await ctx.state.kv.delete(["session", sessionCookie]);
+  const cookies = getCookies(req.headers);
+  const sessionId = cookies["session"];
+  if (sessionId) {
+    const kv = await Deno.openKv();
+    await kv.delete(["session", sessionId]);
   }
 
   const headers = new Headers();

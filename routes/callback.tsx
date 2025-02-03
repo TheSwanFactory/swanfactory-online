@@ -6,7 +6,8 @@ export async function handler(req: Request, ctx: HandlerContext) {
   const headers = new Headers();
   const sessionId = crypto.randomUUID();
   
-  await ctx.state.kv.set(["session", sessionId], tokens);
+  const kv = await Deno.openKv();
+  await kv.set(["session", sessionId], tokens);
   headers.set("location", "/");
   headers.set(
     "set-cookie",

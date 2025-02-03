@@ -8,8 +8,10 @@ export default function App({ Component, url }: AppProps) {
     cookie: url?.searchParams?.get("__fresh_cookie") ?? "",
   }));
   
-  const sessionId = cookies["session"];
-  const user = null; // We'll handle user data in the component
+  const data = {
+    sessionId: cookies["session"] || null,
+    user: null // We'll handle user data in the component
+  };
 
   return (
     <html>

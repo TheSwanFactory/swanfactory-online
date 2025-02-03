@@ -3,12 +3,12 @@ import { oauth2Client } from "../utils/auth.ts";
 
 import { useEffect, useState } from "preact/hooks";
 
-export default function Home(props: { data: { sessionId?: string } }) {
+export default function Home(props: { data?: { sessionId: string | null } }) {
   const [user, setUser] = useState<{ login: string } | null>(null);
 
   useEffect(() => {
     async function fetchUser() {
-      if (props.data.sessionId) {
+      if (props.data?.sessionId) {
         try {
           const kv = await Deno.openKv();
           const tokens = await kv.get(["session", props.data.sessionId]);

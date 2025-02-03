@@ -3,15 +3,15 @@ import { Head } from "$fresh/runtime.ts";
 import { getCookies } from "https://deno.land/std/http/cookie.ts";
 import { oauth2Client } from "../utils/auth.ts";
 
-export default function App({ Component, url }: AppProps) {
+export default async function App({ Component, url }: AppProps) {
   let user = null;
 
-  const cookies = url?.searchParams?.get("__fresh_cookie") ?? "";
-  const cookieMap = new Map(cookies.split("&").map(pair => pair.split("=")));
-  const sessionId = cookieMap.get("session");
-  
-  if (sessionId) {
-    try {
+  try {
+    const cookies = url?.searchParams?.get("__fresh_cookie") ?? "";
+    const cookieMap = new Map(cookies.split("&").map(pair => pair.split("=")));
+    const sessionId = cookieMap.get("session");
+    
+    if (sessionId) {
       const kv = await Deno.openKv();
       const tokens = await kv.get(["session", sessionId]);
       if (tokens.value) {
@@ -24,9 +24,9 @@ export default function App({ Component, url }: AppProps) {
           user = await response.json();
         }
       }
-    } catch (error) {
-      console.error("Error fetching user:", error);
     }
+  } catch (error) {
+    console.error("Error fetching user:", error);
   }
 
   return (

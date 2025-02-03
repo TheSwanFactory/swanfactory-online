@@ -39,7 +39,7 @@ export default async function App(props: AppProps) {
       </Head>
       <body>
         <main>
-          <Component {...props} data={{ user }} />
+          <Component data={{ user }} />
         </main>
         <footer className="site-footer text-sm text-gray-500">
           <p>&copy; 2025 The Swan Factory</p>

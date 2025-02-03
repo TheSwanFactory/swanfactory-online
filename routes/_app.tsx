@@ -1,16 +1,19 @@
 import { AppProps } from "$fresh/server.ts";
 import { Head } from "$fresh/runtime.ts";
+import { getCookies } from "https://deno.land/std/http/cookie.ts";
 import { oauth2Client } from "../utils/auth.ts";
 
 export default async function App(props: AppProps) {
   const { Component } = props;
   let user = null;
 
-  // Get session from cookie
-  const sessionCookie = props.state.cookies?.session;
-  if (sessionCookie) {
+  const cookies = getCookies(props.url.headers);
+  const sessionId = cookies.session;
+  
+  if (sessionId) {
     try {
-      const tokens = await props.state.kv.get(["session", sessionCookie]);
+      const kv = await Deno.openKv();
+      const tokens = await kv.get(["session", sessionId]);
       if (tokens.value) {
         const response = await fetch("https://api.github.com/user", {
           headers: {

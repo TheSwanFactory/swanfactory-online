@@ -1,7 +1,6 @@
-import { HandlerContext } from "$fresh/server.ts";
 import { oauth2Client } from "../utils/auth.ts";
 
-export async function handler(req: Request, ctx: HandlerContext) {
+export async function handler(req: Request) {
   const tokens = await oauth2Client.code.getToken(req.url);
   const headers = new Headers();
   const sessionId = crypto.randomUUID();

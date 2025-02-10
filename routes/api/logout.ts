@@ -1,7 +1,6 @@
-import { HandlerContext } from "$fresh/server.ts";
 import { getCookies } from "https://deno.land/std@0.224.0/http/cookie.ts";
 
-export async function handler(req: Request, ctx: HandlerContext) {
+export async function handler(req: Request) {
   const cookies = getCookies(req.headers);
   const sessionId = cookies["session"];
   if (sessionId) {

@@ -15,5 +15,4 @@ aider --model sonnet  # automatically set in .aider.conf.yml
 deno task t  # lint and test
 open http://localhost:8000
 deno task start
-
 ```

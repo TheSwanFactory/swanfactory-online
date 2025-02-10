@@ -4,7 +4,7 @@ export async function handler(req: Request) {
   const tokens = await oauth2Client.code.getToken(req.url);
   const headers = new Headers();
   const sessionId = crypto.randomUUID();
-  
+
   const kv = await Deno.openKv();
   await kv.set(["session", sessionId], tokens);
   headers.set("location", "/");

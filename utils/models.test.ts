@@ -1,4 +1,4 @@
-import { assertEquals } from "jsr:@std/assert";
+import { assertEquals, assertNotEquals } from "jsr:@std/assert";
 import { db, User } from "./models.ts";
 
 // Test UserModel
@@ -19,8 +19,13 @@ Deno.test("Upsert User into db", async () => {
   // getOne
   const one = await db.users.getOne();
   console.log(one);
+  assertNotEquals(one, null);
   assertEquals(one?.value.realm, user.realm);
 
-  // delete
-  await db.users.deleteByPrimaryIndex("realm", user.realm);
+  const user_id = one?.id;
+  if (user_id !== undefined) {
+    await db.users.delete(user_id);
+  } else {
+    throw new Error("user_id is undefined");
+  }
 });
